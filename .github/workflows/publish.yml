@@ -33,7 +33,7 @@ jobs:
         python -m pip install --upgrade pip 
         pip install hatch
     - name: Get the editor
-        run bash update_editor.sh
+      run: bash update_editor.sh
     - name: Build package
       run: hatch build
     #- name: Publish package distributions to PyPI
