@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rocher"
+dynamic = ["version"]
+description = 'Rocher is wrapper arround the Monaco Editor. It can be embed into any Python web application.'
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Julien Duponchelle", email = "julien@duponchelle.info" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/julien-duponchelle/rocher#readme"
+Issues = "https://github.com/unknown/rocher/issues"
+Source = "https://github.com/unknown/rocher"
+
+[tool.hatch.version]
+path = "rocher/version.py"
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.7", "3.8", "3.9", "3.10", "3.11"]
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  "ruff>=0.0.243",
+]
+
+[tool.ruff.isort]
+known-first-party = ["rocher"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/samples",
+  "update_editor.sh"
+]
