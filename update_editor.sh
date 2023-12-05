@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script is used to update the monaco editor version
 
-VERSION=0.43.0
+VERSION=0.42.0
 
 echo "__version__ = '$VERSION'" > rocher/version.py
 wget https://registry.npmjs.org/monaco-editor/-/monaco-editor-$VERSION.tgz
@@ -18,7 +18,7 @@ cp package/ThirdPartyNotices.txt rocher/vs/ThirdPartyNotices.txt
 
 rm -Rf package
 
-if [ $(git tag -l "$version") ]; then
+if [ $(git tag -l "v$VERSION") ]; then
     echo "Tag $VERSION already exists"
 else
     git add .
