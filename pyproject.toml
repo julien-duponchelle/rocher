@@ -28,8 +28,8 @@ dependencies = []
 
 [project.urls]
 Documentation = "https://github.com/julien-duponchelle/rocher#readme"
-Issues = "https://github.com/unknown/rocher/issues"
-Source = "https://github.com/unknown/rocher"
+Issues = "https://github.com/julien-duponchelle/rocher/issues"
+Source = "https://github.com/julien-duponchelle/rocher"
 
 [tool.hatch.version]
 path = "rocher/version.py"
