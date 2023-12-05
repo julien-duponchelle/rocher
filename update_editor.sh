@@ -18,6 +18,10 @@ cp package/ThirdPartyNotices.txt rocher/vs/ThirdPartyNotices.txt
 
 rm -Rf package
 
-git add .
-git commit -m "Monaco editor version $VERSION"
-git tag -a v$VERSION -m "Monaco editor version $VERSION"
+if [ $(git tag -l "$version") ]; then
+    echo "Tag $VERSION already exists"
+else
+    git add .
+    git commit -m "Monaco editor version $VERSION"
+    git tag -a v$VERSION -m "Monaco editor version $VERSION"
+fi
