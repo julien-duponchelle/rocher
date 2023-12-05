@@ -1,6 +1,6 @@
 # Rocher
 
-Rocher is a Python package for the Monoco editor. It provide a prebuild version as Python package allowing to embed the editor in any Python application as classic Python package.
+Rocher is a Python package for the Monaco editor. It provide a prebuild version as Python package allowing to embed the editor in any Python application as classic Python package.
 
 ## Installation
 
@@ -39,6 +39,8 @@ And run:
 hatch build -t sdist 
 ```
 To build the packaged version.
+
+
 
 ## License
 
