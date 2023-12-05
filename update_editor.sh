@@ -17,3 +17,7 @@ cp package/LICENSE rocher/vs/LICENSE
 cp package/ThirdPartyNotices.txt rocher/vs/ThirdPartyNotices.txt
 
 rm -Rf package
+
+git add .
+git commit -m "Monaco editor version $VERSION"
+git tag -a v$VERSION -m "Monaco editor version $VERSION"
