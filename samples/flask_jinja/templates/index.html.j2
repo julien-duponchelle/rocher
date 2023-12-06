@@ -1,0 +1,30 @@
+<html>
+<body>
+    <h1>Flask Sample with Jinja</h1>    
+    <input type="button" value="Save" onclick="save()" />
+    <div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
+    {{
+        rocher_editor(
+            "container",
+            "python",
+            source_code,
+        )
+    }}
+    
+    <!-- You can access to the editor instance via module rocher_editor -->
+    <script>
+        require(['rocher_editor'], function (editor) {
+            var myBinding = editor.addCommand(monaco.KeyCode.F9, function () {
+            	alert("F9 pressed!");
+            });
+        });
+
+        function save() {
+            require(['rocher_editor'], function (editor) {
+                var source_code = editor.getValue();
+                console.log(source_code);
+            });
+        }
+    </script>
+</body>
+</html>
