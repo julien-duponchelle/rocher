@@ -53,5 +53,9 @@ known-first-party = ["rocher"]
 exclude = [
   "/.github",
   "/samples",
-  "update_editor.sh"
+  "update_editor.sh",
+  "screenshot.png",
+]
+artifacts = [
+  "rocher/vs"
 ]
