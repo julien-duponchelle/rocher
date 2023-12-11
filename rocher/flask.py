@@ -1,4 +1,4 @@
-from .rocher import editor_html, path
+from .rocher import editor_html, colorize_html, path
 
 def editor_register(app) -> None:
     """
@@ -17,4 +17,7 @@ def editor_register(app) -> None:
     # Expose the editor_html function to Jinja templates with static directory already set
     def flask_editor_html(*args, **kwargs):
         return editor_html(static_editor_path, *args, **kwargs)
-    app.jinja_env.globals.update(rocher_editor=flask_editor_html)
+
+    def flask_colorize_html(*args, **kwargs):
+        return colorize_html(static_editor_path, *args, **kwargs)
+    app.jinja_env.globals.update(rocher_editor=flask_editor_html, rocher_colorize=flask_colorize_html)

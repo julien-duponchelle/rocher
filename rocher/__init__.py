@@ -1,3 +1,3 @@
-from .rocher import editor_html, path
+from .rocher import editor_html, path, colorize_html
 
-__all__ = ["editor_html", "path"]
+__all__ = ["editor_html", "path", "colorize_html"]

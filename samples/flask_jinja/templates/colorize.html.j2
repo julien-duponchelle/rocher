@@ -1,0 +1,52 @@
+<html>
+<body>
+    You can also just use the colorizer:
+    {{ rocher_colorize("code1", initialize=True) }}
+    <!-- Only the first editor need to be intialize -->
+    {{ rocher_colorize("code2", initialize=False) }}
+
+<h2>Python</h2>
+<pre id="code1" data-lang="python" style="width: 500px">
+{{ source_code }}
+</pre>
+
+<h2>CSS</h2>
+<pre id="code2" data-lang="text/css" style="width: 500px">
+/* Some example CSS */
+
+@import url("something.css");
+
+body {
+  margin: 0;
+  padding: 3em 6em;
+  font-family: tahoma, arial, sans-serif;
+  color: #000;
+}
+
+#navigation a {
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.7em;
+}
+
+h1:before, h2:before {
+  content: "some contents";
+}
+
+code {
+  font-family: courier, monospace;
+  font-size: 80%;
+  color: #418A8A;
+}
+</pre>
+
+
+</body>
+</html>

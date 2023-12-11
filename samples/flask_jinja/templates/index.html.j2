@@ -14,20 +14,22 @@
         )
     }}
     
-    <!-- You can access to the editor instance via module rocher_editor -->
+    <!-- You can access to the editor instance via module rocher_editor followed by the container id -->
     <script>
-        require(['rocher_editor'], function (editor) {
+        require(['rocher_editor_container'], function (editor) {
             var myBinding = editor.addCommand(monaco.KeyCode.F9, function () {
             	alert("F9 pressed!");
             });
         });
 
         function save() {
-            require(['rocher_editor'], function (editor) {
+            require(['rocher_editor_container'], function (editor) {
                 var source_code = editor.getValue();
-                console.log(source_code);
+                alert(source_code);
             });
         }
     </script>
+
+    <a href="/colorize">Basic syntax highlighting is also available</a>
 </body>
 </html>

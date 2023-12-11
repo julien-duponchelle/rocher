@@ -26,7 +26,7 @@ rocher.path()
 
 This is the path where the Monaco editor is installed. You can serve after this path with your favorite Python web framework as a static folder.
 
-### HTML
+### Editor HTML
 
 The package provides a editor_html():
 
@@ -42,6 +42,19 @@ rocher.editor_html(
 ```
 
 This function will return a HTML string that you can embed in your web page. The first parameter is the path where the Monaco editor is exposed. The second parameter is the id of the HTML element where the editor will be embedded. The third parameter is the language of the editor. The fourth parameter is the initial content of the editor.
+
+### Colorizer
+
+The package also a simple syntax highlighter:
+
+```python
+import rocher
+
+rocher.colorize_html("container")
+```
+
+This function will return a HTML string that you can embed in your web page. The first parameter is the id of the HTML element where the content will be highlighted.
+
 
 ### Flask
 
@@ -74,6 +87,20 @@ Then you can use the editor in your template:
         lineHeight=20
     )
 }}
+```
+
+All supported options are listed here: https://microsoft.github.io/monaco-editor/docs.html#interfaces/editor.IStandaloneEditorConstructionOptions.html
+
+
+Or the colorizer:
+
+```django
+{{ rocher_colorize("code", initialize=False) }}
+
+<h2>Python</h2>
+<pre id="code" data-lang="python" style="width: 500px">
+print("Hello World!")
+</pre>
 ```
 
 ## Why the name Rocher?

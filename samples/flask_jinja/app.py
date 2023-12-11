@@ -25,8 +25,12 @@ with open(__file__) as f:
     source_code = f.read()
 
 @app.route("/")
-def hello():
+def index():
     return render_template("index.html.j2", source_code=source_code)
+
+@app.route("/colorize")
+def colorize():
+    return render_template("colorize.html.j2", source_code=source_code)
 
 
 if __name__ == "__main__":
