@@ -49,7 +49,7 @@ dependencies = [
 [tool.ruff.isort]
 known-first-party = ["rocher"]
 
-[tool.hatch.build.targets.sdist]
+[tool.hatch.build]
 exclude = [
   "/.github",
   "/samples",
