@@ -1,14 +1,15 @@
 #!/bin/bash
 # This script is used to update the monaco editor version
 
-VERSION=0.43.0
+MONACO_VERSION=0.43
+ROCHER_PATCH_VERSION=2
 
-echo "__version__ = '$VERSION'" > rocher/version.py
-wget https://registry.npmjs.org/monaco-editor/-/monaco-editor-$VERSION.tgz
+echo "__version__ = '$MONACO_VERSION.$ROCHER_PATCH_VERSION'" > rocher/version.py
+wget https://registry.npmjs.org/monaco-editor/-/monaco-editor-$MONACO_VERSION.0.tgz
 
 
-tar -xvf monaco-editor-$VERSION.tgz
-rm -rf monaco-editor-$VERSION.tgz
+tar -xvf monaco-editor-$MONACO_VERSION.0.tgz
+rm -rf monaco-editor-$MONACO_VERSION.0.tgz
 
 rm -Rf rocher/vs
 
@@ -18,10 +19,10 @@ cp package/ThirdPartyNotices.txt rocher/vs/ThirdPartyNotices.txt
 
 rm -Rf package
 
-if [ $(git tag -l "v$VERSION") ]; then
-    echo "Tag $VERSION already exists"
+if [ $(git tag -l "v$MONACO_VERSION.$ROCHER_PATCH_VERSION") ]; then
+    echo "Tag $MONACO_VERSION.$ROCHER_PATCH_VERSION already exists"
 else
     git add .
-    git commit -m "Monaco editor version $VERSION"
-    git tag -a v$VERSION -m "Monaco editor version $VERSION"
+    git commit -m "Monaco editor version $MONACO_VERSION"
+    git tag -a "v$MONACO_VERSION.$ROCHER_PATCH_VERSION" -m "Monaco editor version $MONACO_VERSION"
 fi
