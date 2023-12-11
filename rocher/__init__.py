@@ -27,7 +27,7 @@ def flask_editor_register(app) -> str:
     app.jinja_env.globals.update(rocher_editor=flask_editor_html)
 
 
-def editor_html(static_root: str, container_id: str, language: str,  value: str) -> str:
+def editor_html(static_root: str, container_id: str, language: str,  value: str, **kwargs) -> str:
     """
     Returns the HTML for the editor.
 
@@ -48,7 +48,16 @@ def editor_html(static_root: str, container_id: str, language: str,  value: str)
     """
     output += "value: '"
     output += value.replace("'", "\\'").replace("\n", "\\n")
-    output += "',"
+    output += "',\n"
+
+    for key, value in kwargs.items():
+        if isinstance(value, bool):
+            output += f"""{key}: {str(value).lower()},\n"""
+        elif isinstance(value, int) or isinstance(value, float):
+            output += f"""{key}: {value},\n"""
+        else:
+            output += f"""{key}: '{value}',\n"""
+
     output += f"""
                     language: '{language}'
                 }});
