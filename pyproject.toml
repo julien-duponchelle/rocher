@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "rocher"
 dynamic = ["version"]
-description = 'Rocher is wrapper arround the Monaco Editor. It can be embed into any Python web application.'
+description = 'Rocher is wrapper arround the Monaco code Editor. It can be embed into any Python web application. Helper for Flask is provided.'
 readme = "README.md"
 requires-python = ">=3.7"
 license = "MIT"
