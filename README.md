@@ -51,11 +51,11 @@ First you need to register the editor
 
 ```python
 from flask import Flask
-import rocher
+import rocher.flask
 
 app = Flask(__name__)
 
-rocher.flask_editor_register(app)
+rocher.editor_register(app)
 ```
     
 Then you can use the editor in your template:

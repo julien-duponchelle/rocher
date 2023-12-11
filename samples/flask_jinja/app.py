@@ -12,13 +12,13 @@ Then open your browser to http://localhost:5000
 """
 
 from flask import Flask, render_template
-import rocher
+import rocher.flask
 
 app = Flask(__name__)
 
 # Register the editor with the Flask app
 # and expose the rocher_editor function to Jinja templates
-rocher.flask_editor_register(app)
+rocher.flask.editor_register(app)
 
 # Read the source code of this file to highlight it in the editor
 with open(__file__) as f:
