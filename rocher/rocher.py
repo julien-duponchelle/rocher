@@ -1,4 +1,6 @@
+import json
 import os
+
 
 def path() -> str:
     """
@@ -32,7 +34,6 @@ def editor_html(static_root: str, container_id: str, language: str,  value: str,
     value: The code to be edited.
     **kwargs: Additional arguments to pass to the Monaco editor.
     """
-    value = value.replace("'", "\\'").replace("\n", "\\n")
     output = _init_monaco_editor(static_root)
     output += _monaco_editor("create", container_id, language=language, value=value, **kwargs)
     return output
@@ -59,16 +60,10 @@ def _monaco_editor(method: str, container_id: str, **kwargs) -> str:
         define('rocher_editor_{container_id}', ['vs/editor/editor.main'], function() {{
             return  monaco.editor.{method}(document.getElementById('{container_id}'), {{
     """
-    for key, value in kwargs.items():
-        if isinstance(value, bool):
-            output += f"""{key}: {str(value).lower()},\n"""
-        elif isinstance(value, int) or isinstance(value, float):
-            output += f"""{key}: {value},\n"""
-        else:
-            output += f"""{key}: '{value}',\n"""
-
-    output += f"""}});
-            }});
+    output += json.dumps(kwargs)[1:-1]
+    print(output)
+    output += """});
+            });
     </script>
     """
 
