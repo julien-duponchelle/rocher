@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script is used to update the monaco editor version
 
-MONACO_VERSION=0.44
+MONACO_VERSION=0.45
 ROCHER_PATCH_VERSION=0
 
 echo "__version__ = '$MONACO_VERSION.$ROCHER_PATCH_VERSION'" > rocher/version.py
