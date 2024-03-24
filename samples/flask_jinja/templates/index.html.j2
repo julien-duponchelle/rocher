@@ -2,6 +2,7 @@
 <body>
     <h1>Flask Sample with Jinja</h1>    
     <input type="button" value="Save" onclick="save()" />
+    <input type="button" value="Upper case" onclick="upper()" />
     <div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
     {{
         rocher_editor(
@@ -27,6 +28,23 @@
             require(['rocher_editor_container'], function (editor) {
                 var source_code = editor.getValue();
                 alert(source_code);
+            });
+        }
+
+        function upper() {
+            require(['rocher_editor_container'], function (editor) {
+                var source_code = editor.getValue();
+
+                fetch('/upper', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({source_code: source_code}),
+                }).then(response => response.json())
+                .then(data => {
+                    editor.setValue(data.source_code);
+                });
             });
         }
     </script>
