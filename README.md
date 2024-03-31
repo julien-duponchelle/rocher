@@ -2,7 +2,7 @@
 
 <a href="https://pypi.python.org/pypi/rocher"><img src="http://img.shields.io/pypi/dm/rocher.svg"></a>
 
-Rocher is a Python package for the Monaco code editor. The Monaco Editor is the code editor that powers Visual Studio Code. It provides a prebuilt version of the editor as a Python package, allowing you to embed it into any Python application as a standard Python package.
+Rocher is a Python package for the [https://github.com/microsoft/monaco-editor](Monaco) code editor. The Monaco Editor is the code editor that powers Visual Studio Code. It provides a prebuilt version of the editor as a Python package, allowing you to embed it into any Python application as a standard Python package.
 
 ![Screenshot](screenshot.png)
 
