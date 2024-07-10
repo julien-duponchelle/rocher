@@ -61,7 +61,6 @@ def _monaco_editor(method: str, container_id: str, **kwargs) -> str:
             return  monaco.editor.{method}(document.getElementById('{container_id}'), {{
     """
     output += json.dumps(kwargs)[1:-1]
-    print(output)
     output += """});
             });
     </script>
