@@ -127,6 +127,9 @@ To build the packaged version.
 
 The Monaco Editor is not part of this repository. It is downloaded from the official repository during the build process. See the update_editor.sh script.
 
+## Projects using this package
+
+- [https://github.com/julien-duponchelle/colvert](Colvert a DuckDB UI)
 
 ## License
 
