@@ -2,14 +2,15 @@
 # This script is used to update the monaco editor version
 
 MONACO_VERSION=0.52
-ROCHER_PATCH_VERSION=0
+MONACO_VERSION_PATCH=2
+ROCHER_PATCH_VERSION=$MONACO_VERSION_PATCH
 
 echo "__version__ = '$MONACO_VERSION.$ROCHER_PATCH_VERSION'" > rocher/version.py
-wget https://registry.npmjs.org/monaco-editor/-/monaco-editor-$MONACO_VERSION.0.tgz
+wget https://registry.npmjs.org/monaco-editor/-/monaco-editor-$MONACO_VERSION.$MONACO_VERSION_PATCH.tgz
 
 
-tar -xvf monaco-editor-$MONACO_VERSION.0.tgz
-rm -rf monaco-editor-$MONACO_VERSION.0.tgz
+tar -xvf monaco-editor-$MONACO_VERSION.$MONACO_VERSION_PATCH.tgz
+rm -rf monaco-editor-$MONACO_VERSION.$MONACO_VERSION_PATCH.tgz
 
 rm -Rf rocher/vs
 
