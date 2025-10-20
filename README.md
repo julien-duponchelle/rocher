@@ -134,6 +134,7 @@ The Monaco Editor is not part of this repository. It is downloaded from the offi
 ## Projects using this package
 
 - [https://github.com/julien-duponchelle/colvert](Colvert a DuckDB UI)
+- [https://github.com/assembliss/webassembliss](webassembliss: WebApp that emulates different versions of assembly)
 
 ## License
 
