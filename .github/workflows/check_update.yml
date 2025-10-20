@@ -10,6 +10,9 @@ jobs:
   update-monaco:
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: write
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,7 +28,13 @@ jobs:
         id: check_update
         run: python3 check_monaco_update.py
       
-      - name: Commit and push if updated
+      - name: Run update script
+        if: steps.check_update.outputs.updated == 'true'
+        run: |
+          chmod +x update_editor.sh
+          ./update_editor.sh
+      
+      - name: Commit and push changes
         if: steps.check_update.outputs.updated == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -33,20 +42,16 @@ jobs:
           git add update_editor.sh
           git commit -m "Update Monaco Editor to version ${{ steps.check_update.outputs.new_version }}"
           git push
-
+      
       - name: Create GitHub Release
         if: steps.check_update.outputs.updated == 'true'
-        uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ steps.check_update.outputs.new_version }}
-          release_name: Monaco Editor v${{ steps.check_update.outputs.new_version }}
-          body: |
-            Updated Monaco Editor to version ${{ steps.check_update.outputs.new_version }}
-            
-            Changes:
-            - Updated monaco-editor package to v${{ steps.check_update.outputs.new_version }}
-            - Updated all related files and dependencies
-          draft: false
-          prerelease: false
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ steps.check_update.outputs.new_version }}" \
+            --title "Monaco Editor v${{ steps.check_update.outputs.new_version }}" \
+            --notes "Updated Monaco Editor to version ${{ steps.check_update.outputs.new_version }}
+
+          Changes:
+          - Updated monaco-editor package to v${{ steps.check_update.outputs.new_version }}
+          - Updated all related files and dependencies"
