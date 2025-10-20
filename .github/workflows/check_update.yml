@@ -54,4 +54,3 @@ jobs:
 
           Changes:
           - Updated monaco-editor package to v${{ steps.check_update.outputs.new_version }}
-          - Updated all related files and dependencies"
