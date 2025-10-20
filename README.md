@@ -123,6 +123,10 @@ hatch build -t sdist
 ```
 To build the packaged version.
 
+## Automated builds
+
+An automated build runs every Friday to check for updates. If a new version of the Monaco Editor has been published on NPM, a new release will be created automatically.
+
 ## I can't find the Monaco Editor source code in the repository
 
 The Monaco Editor is not part of this repository. It is downloaded from the official repository during the build process. See the update_editor.sh script.
