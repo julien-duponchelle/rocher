@@ -34,8 +34,19 @@ jobs:
           git commit -m "Update Monaco Editor to version ${{ steps.check_update.outputs.new_version }}"
           git push
 
-      - name: Create and push tag
+      - name: Create GitHub Release
         if: steps.check_update.outputs.updated == 'true'
-        run: |
-          git tag -a "v${{ steps.check_update.outputs.new_version }}" -m "Monaco editor version ${{ steps.check_update.outputs.new_version }}"
-          git push origin "v${{ steps.check_update.outputs.new_version }}"
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.check_update.outputs.new_version }}
+          release_name: Monaco Editor v${{ steps.check_update.outputs.new_version }}
+          body: |
+            Updated Monaco Editor to version ${{ steps.check_update.outputs.new_version }}
+            
+            Changes:
+            - Updated monaco-editor package to v${{ steps.check_update.outputs.new_version }}
+            - Updated all related files and dependencies
+          draft: false
+          prerelease: false
