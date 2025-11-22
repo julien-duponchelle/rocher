@@ -23,6 +23,8 @@ rm -Rf package
 if [ $(git tag -l "v$MONACO_VERSION.$ROCHER_PATCH_VERSION") ]; then
     echo "Tag $MONACO_VERSION.$ROCHER_PATCH_VERSION already exists"
 else
+    git config --local user.email "github-actions[bot]@users.noreply.github.com"
+    git config --local user.name "github-actions[bot]"
     git add .
     git commit -m "Monaco editor version $MONACO_VERSION"
     git tag -a "v$MONACO_VERSION.$ROCHER_PATCH_VERSION" -m "Monaco editor version $MONACO_VERSION"
