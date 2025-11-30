@@ -27,5 +27,5 @@ else
     git config --local user.name "github-actions[bot]"
     git add .
     git commit -m "Monaco editor version $MONACO_VERSION"
-    git tag -a "v$MONACO_VERSION.$ROCHER_PATCH_VERSION" -m "Monaco editor version $MONACO_VERSION"
+    git push origin
 fi

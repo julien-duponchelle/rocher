@@ -34,15 +34,6 @@ jobs:
           chmod +x update_editor.sh
           ./update_editor.sh
       
-      - name: Commit and push changes
-        if: steps.check_update.outputs.updated == 'true'
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add update_editor.sh
-          git commit -m "Update Monaco Editor to version ${{ steps.check_update.outputs.new_version }}"
-          git push
-      
       - name: Create GitHub Release
         if: steps.check_update.outputs.updated == 'true'
         env:
@@ -53,4 +44,4 @@ jobs:
             --notes "Updated Monaco Editor to version ${{ steps.check_update.outputs.new_version }}
 
           Changes:
-          - Updated monaco-editor package to v${{ steps.check_update.outputs.new_version }}
+          - Updated monaco-editor package to v${{ steps.check_update.outputs.new_version }}"
