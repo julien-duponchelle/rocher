@@ -1,8 +1,9 @@
 name: Publish to PyPI
 
 on:
-    release:
-      types: [published]
+  release:
+    types: [published]
+  workflow_dispatch: # Allows manual trigger from GitHub UI
 
 permissions:
   contents: read
